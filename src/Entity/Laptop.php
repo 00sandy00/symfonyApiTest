@@ -4,10 +4,27 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\LaptopRepository;
+use App\Controller\LaptopController;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * collectionOperations={
+ *  "get",
+ * "post"
+ * },
+ * itemOperations={    
+ *    "get",
+ * "put" ,
+ * "patch",
+ * "delete",
+ * 
+ *    "post_available" ={
+ *        "method" = "post",
+ *        "path" = "/available/{id}",
+ *        "controller" = LaptopController::class,     
+ * }
+ *})
  * @ORM\Entity(repositoryClass=LaptopRepository::class)
  */
 class Laptop
